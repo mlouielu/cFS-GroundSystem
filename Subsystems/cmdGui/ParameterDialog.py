@@ -222,7 +222,7 @@ class Ui_Dialog(object):
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
 
         self.retranslateUi(Dialog)
-        self.buttonBox.clicked[QAbstractButton].connect(Dialog.close)
+        self.buttonBox.clicked[QtWidgets.QAbstractButton].connect(Dialog.close)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

@@ -679,7 +679,7 @@ class Ui_GenericCommandDialog(object):
         self.verticalLayout_6.addWidget(self.scrollArea)
 
         self.retranslateUi(GenericCommandDialog)
-        self.buttonBox.clicked[QAbstractButton].connect(GenericCommandDialog.close)
+        self.buttonBox.clicked[QtWidgets.QAbstractButton].connect(GenericCommandDialog.close)
         QtCore.QMetaObject.connectSlotsByName(GenericCommandDialog)
 
     def retranslateUi(self, GenericCommandDialog):

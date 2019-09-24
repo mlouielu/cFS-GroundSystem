@@ -1328,7 +1328,7 @@ class Ui_CommandSystemDialog(object):
         self.verticalLayout.addWidget(self.scrollArea)
 
         self.retranslateUi(CommandSystemDialog)
-        self.buttonBox.clicked[QAbstractButton].connect(CommandSystemDialog.close)
+        self.buttonBox.clicked[QtWidgets.QAbstractButton].connect(CommandSystemDialog.close)
         QtCore.QMetaObject.connectSlotsByName(CommandSystemDialog)
 
     def retranslateUi(self, CommandSystemDialog):
