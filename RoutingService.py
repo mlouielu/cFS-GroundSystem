@@ -37,11 +37,11 @@ udpRecvPort = 1235
 # and publish the message with zeroMQ
 #
 class RoutingService(QtCore.QThread):
+    # Signal to update the spacecraft combo box (list) on main window GUI
+    signalUpdateIpList = QtCore.pyqtSignal(name="changeIpList")
 
     def __init__(self, mainWindow):
         QtCore.QThread.__init__(self)
-        # Signal to update the spacecraft combo box (list) on main window GUI
-        self.signalUpdateIpList = QtCore.SIGNAL("changeIpList")
 
         # Init lists
         self.ipAddressesList = ["All"]

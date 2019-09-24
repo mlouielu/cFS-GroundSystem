@@ -81,7 +81,7 @@ class EventMessageTelemetry(QtWidgets.QDialog):
     def initTlmReceiver(self, subscription):
         self.setWindowTitle(pageTitle + ' for: ' + subscription)
         self.thread = TlmReceiver(self, subscription, self.appId)
-        self.connect(self.thread, self.thread.signalTlmDatagram, self.processPendingDatagrams)
+        self.thread.signalTlmDatagram.connect(self.processPendingDatagrams)
         self.thread.start()
 
     # This method processes packets. Called when the TelemetryReceiver receives a message/packet
@@ -109,13 +109,12 @@ class EventMessageTelemetry(QtWidgets.QDialog):
 
 # Subscribes and receives zeroMQ messages
 class TlmReceiver(QtCore.QThread):
+    # Setup signal to communicate with front-end GUI
+    signalTlmDatagram = QtCore.pyqtSignal(name="TlmDatagram")
     
     def __init__(self, mainWindow, subscription, appId):
         QtCore.QThread.__init__(self)
         self.appId = appId
-
-        # Setup signal to communicate with front-end GUI
-        self.signalTlmDatagram = QtCore.SIGNAL("TlmDatagram")
 
         # Init zeroMQ
         self.context   = zmq.Context()

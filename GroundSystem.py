@@ -113,7 +113,7 @@ class GroundSystem(QtWidgets.QMainWindow):
     # Start the routing service (see RoutingService.py)
     def initRoutingService(self):
         self.RoutingService = RoutingService(self)
-        self.connect(self.RoutingService, self.RoutingService.signalUpdateIpList, self.updateIpList)
+        self.RoutingService.signalUpdateIpList.connect(self.updateIpList)
         self.RoutingService.start()
 
 #

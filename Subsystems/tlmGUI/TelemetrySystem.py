@@ -144,7 +144,7 @@ class TelemetrySystem(QtWidgets.QDialog):
         self.setWindowTitle('Telemetry System page for: ' + subscription)
         self.subscription = subscription
         self.thread = TlmReceiver(self, subscription)
-        self.connect(self.thread, self.thread.signalTlmDatagram, self.processPendingDatagrams)
+        self.thread.signalTlmDatagram.connect(self.processPendingDatagrams)
         self.thread.start()
 
     #
@@ -245,12 +245,11 @@ class TelemetrySystem(QtWidgets.QDialog):
 
 # Subscribes and receives zeroMQ messages
 class TlmReceiver(QtCore.QThread):
+    # Setup signal to communicate with front-end GUI
+    signalTlmDatagram = QtCore.pyqtSignal(name="TlmDatagram")
     
     def __init__(self, mainWindow, subscription):
         QtCore.QThread.__init__(self)
-
-        # Setup signal to communicate with front-end GUI
-        self.signalTlmDatagram = QtCore.SIGNAL("TlmDatagram")
 
         # Init zeroMQ
         self.context   = zmq.Context()
