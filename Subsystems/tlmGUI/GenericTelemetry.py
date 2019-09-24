@@ -22,15 +22,15 @@
 
 import sys
 import csv
-import getopt 
+import getopt
 import pdb
 import zmq
 
-from PyQt4 import QtGui, QtCore
+from PyQt5 import QtCore, QtGui, QtWidgets
 from GenericTelemetryDialog import Ui_GenericTelemetryDialog
 from struct import *
 
-class SubsystemTelemetry(QtGui.QDialog):
+class SubsystemTelemetry(QtWidgets.QDialog):
 
     pktCount = 0
 
@@ -38,7 +38,7 @@ class SubsystemTelemetry(QtGui.QDialog):
     # Init the class
     #
     def __init__(self):
-        QtGui.QDialog.__init__(self)
+        QtWidgets.QDialog.__init__(self)
         self.ui = Ui_GenericTelemetryDialog()
         self.ui.setupUi(self)
 
@@ -150,9 +150,9 @@ class TlmReceiver(QtCore.QThread):
 # Display usage
 #
 def usage():
-    print "Must specify --title=<page name> --port=<udp_port> --appid=<packet_app_id(hex)> --endian=<endian(L|B) --file=<tlm_def_file> --sub=<subscriber_string>"
-    print "     example: --title=Executive Services --port=10800 --appid=800 --file=cfe-es-hk-table.txt --endian=L --sub=GroundSystem.Spacecraft1.0x886"
-    print "            (quotes are not on the title string in this example)" 
+    print("Must specify --title=<page name> --port=<udp_port> --appid=<packet_app_id(hex)> --endian=<endian(L|B) --file=<tlm_def_file> --sub=<subscriber_string>")
+    print("     example: --title=Executive Services --port=10800 --appid=800 --file=cfe-es-hk-table.txt --endian=L --sub=GroundSystem.Spacecraft1.0x886")
+    print("            (quotes are not on the title string in this example)") 
 
 #
 # Main 
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     if len(subscription) == 0:
         subscription = "GroundSystem"
 
-    print 'Generic Telemetry Page started. Subscribed to ' + subscription
+    print('Generic Telemetry Page started. Subscribed to ' + subscription)
 
     if endian == 'L':
        py_endian = '<'
@@ -208,7 +208,7 @@ if __name__ == '__main__':
     #
     # Init the QT application and the telemetry class
     #
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     Telem = SubsystemTelemetry()
     Telem.ui.subSystemTextBrowser.setText(pageTitle)
     Telem.ui.packetId.display(appId)

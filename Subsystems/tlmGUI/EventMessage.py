@@ -64,16 +64,16 @@ import sys
 import getopt
 import zmq
 
-from PyQt4 import QtGui, QtCore
+from PyQt5 import QtCore, QtGui, QtWidgets
 from EventMessageDialog import Ui_EventMessageDialog
 from struct import *
 
-class EventMessageTelemetry(QtGui.QDialog):
+class EventMessageTelemetry(QtWidgets.QDialog):
 
     pktCount = 0
 
     def __init__(self, appId):
-        QtGui.QDialog.__init__(self)
+        QtWidgets.QDialog.__init__(self)
         self.appId = appId
         self.ui = Ui_EventMessageDialog()
         self.ui.setupUi(self)
@@ -136,9 +136,9 @@ class TlmReceiver(QtCore.QThread):
 # Display usage
 #
 def usage():
-    print "Must specify --title=<page name> --port=<udp_port> --appid=<packet_app_id(hex)> --endian=<endian(L|B) --file=<tlm_def_file>"
-    print "     example: --title=Executive Services --port=10800 --appid=800 --file=cfe-es-hk-table.txt --endian=L"
-    print "            (quotes are not on the title string in this example)"
+    print("Must specify --title=<page name> --port=<udp_port> --appid=<packet_app_id(hex)> --endian=<endian(L|B) --file=<tlm_def_file>")
+    print("     example: --title=Executive Services --port=10800 --appid=800 --file=cfe-es-hk-table.txt --endian=L")
+    print("            (quotes are not on the title string in this example)")
 
  
 if __name__ == '__main__':
@@ -187,7 +187,7 @@ if __name__ == '__main__':
     if len(arr) < 3:
         subscription = 'GroundSystem'
 
-    print 'Event Messages Page started. Subscribed to ' + subscription
+    print('Event Messages Page started. Subscribed to ' + subscription)
 
     if endian == 'L':
        py_endian = '<'
@@ -197,7 +197,7 @@ if __name__ == '__main__':
     #
     # Init the QT application and the Event Message class
     #
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     Telem = EventMessageTelemetry(appId)
 
     # Display the page

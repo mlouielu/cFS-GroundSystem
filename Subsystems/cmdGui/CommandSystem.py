@@ -21,22 +21,22 @@
 # 
 import sys
 import csv
-import subprocess 
+import subprocess
 import shlex
 import pickle
 
-from PyQt4 import QtGui
+from PyQt5 import QtGui, QtWidgets
 from CommandSystemDialog import Ui_CommandSystemDialog
 from struct import *
 
 
-class CommandSystem(QtGui.QDialog):
+class CommandSystem(QtWidgets.QDialog):
 
     #
     # Init the class
     #
     def __init__(self):
-        QtGui.QDialog.__init__(self)
+        QtWidgets.QDialog.__init__(self)
         self.ui = Ui_CommandSystemDialog()
         self.ui.setupUi(self)
         self.setWindowTitle('Command System Main Page')
@@ -146,7 +146,7 @@ class CommandSystem(QtGui.QDialog):
            address = str(lineEditAddress.text())
            launch_string = 'python ' + cmdClass[0] + ' --title=\"' + cmdPageDesc[idx] + '\" --pktid=' + pktId + ' --file=' + cmdPageDefFile[idx] + ' --address=\"' + address + '\"' + ' --port=' + str(cmdPagePort[idx]) + ' --endian=' + cmdPageEndian[idx]
            cmd_args = shlex.split(launch_string)
-           print launch_string
+           print(launch_string)
            subprocess.Popen(cmd_args)
 
     #
@@ -252,7 +252,7 @@ if __name__ == '__main__':
     #
     # Init the QT application and the telemetry dialog class
     #
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     Command = CommandSystem()
 
     #
@@ -284,9 +284,9 @@ if __name__ == '__main__':
                     cmdPagePort.append(int(cmdRow[6]))
                     i += 1
             except IndexError:
-                print "IndexError: list index out of range"
-                print "This could be due to improper formatting in command-pages.txt."
-                print "This is a common error caused by blank lines in command-pages.txt"
+                print("IndexError: list index out of range")
+                print("This could be due to improper formatting in command-pages.txt.")
+                print("This is a common error caused by blank lines in command-pages.txt")
 
     # 
     # Mark the remaining values as invalid
@@ -644,6 +644,6 @@ if __name__ == '__main__':
     #
     Command.show()
     Command.raise_()
-    print 'Command System started.'
+    print('Command System started.')
     sys.exit(app.exec_())
 

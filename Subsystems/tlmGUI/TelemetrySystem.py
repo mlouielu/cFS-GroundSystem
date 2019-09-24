@@ -26,11 +26,11 @@ import getopt
 import shlex
 import zmq
 
-from PyQt4 import QtGui, QtCore
+from PyQt5 import QtCore, QtGui, QtWidgets
 from TelemetrySystemDialog import Ui_TelemetrySystemDialog
 from struct import *
 
-class TelemetrySystem(QtGui.QDialog):
+class TelemetrySystem(QtWidgets.QDialog):
 
     pktCount = 0
 
@@ -38,7 +38,7 @@ class TelemetrySystem(QtGui.QDialog):
     # Init the class
     #
     def __init__(self):
-        QtGui.QDialog.__init__(self)
+        QtWidgets.QDialog.__init__(self)
         self.ui = Ui_TelemetrySystemDialog()
         self.ui.setupUi(self)
         self.setWindowTitle('Telemetry System Main Page')
@@ -81,9 +81,9 @@ class TelemetrySystem(QtGui.QDialog):
          appIdString = "%02X" % ord(packetData[0])
          appIdString = appIdString + "%02X" % ord(packetData[1])
          appId = (ord(packetData[0]) << 8) + (ord(packetData[1]))
-         print "\n-----------------------------------------------"
-         print "\nPacket: App ID = ",  hex(appId)
-         print "\nPacket Data: ", strToHex(packetData)
+         print("\n-----------------------------------------------")
+         print("\nPacket: App ID = ",  hex(appId))
+         print("\nPacket Data: ", strToHex(packetData))
 
     #
     # Button press methods
@@ -168,10 +168,10 @@ class TelemetrySystem(QtGui.QDialog):
             appIdString = "%02X" % ord(packetData[0])
             appIdString = appIdString + "%02X" % ord(packetData[1])
             appId = (ord(packetData[0]) << 8) + (ord(packetData[1]))
-            print appIdString
-            print "\nPacket: App ID = ",  hex(appId)
-            print "\nPacket Data: ", strToHex(packetData)
-            print "\n-----------------------------------------------"
+            print(appIdString)
+            print("\nPacket: App ID = ",  hex(appId))
+            print("\nPacket Data: ", strToHex(packetData))
+            print("\n-----------------------------------------------")
 
         #
         # Show number of packets received
@@ -274,7 +274,7 @@ if __name__ == '__main__':
     #
     # Init the QT application and the telemetry dialog class
     #
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     Telem = TelemetrySystem()
 
 
@@ -300,7 +300,7 @@ if __name__ == '__main__':
     if len(subscription) == 0:
         subscription = "GroundSystem"
 
-    print 'Telemetry System started. Subscribed to ' + subscription
+    print('Telemetry System started. Subscribed to ' + subscription)
     #
     # Read in the contents of the telemetry packet defintion
     #

@@ -26,20 +26,20 @@ import os
 import socket
 import zmq
 
-from PyQt4 import QtGui, QtNetwork, QtCore
+from PyQt5 import QtCore, QtGui, QtNetwork, QtWidgets
 from MainWindow import Ui_MainWindow
 from RoutingService import RoutingService
 
 #
 # CFS Ground System: Setup and manage the main window
 #
-class GroundSystem(QtGui.QMainWindow):
+class GroundSystem(QtWidgets.QMainWindow):
 
     #
     # Init the class
     #
     def __init__(self, parent=None):
-        QtGui.QMainWindow.__init__(self)
+        QtWidgets.QMainWindow.__init__(self)
 
         # Init lists
         self.ipAddressesList = ['All']
@@ -54,7 +54,7 @@ class GroundSystem(QtGui.QMainWindow):
     def closeEvent(self, evnt):
         if self.RoutingService:
             self.RoutingService.stop()
-            print "Stopped routing service"
+            print("Stopped routing service")
 
         super(GroundSystem, self).closeEvent(evnt)
 
@@ -70,10 +70,10 @@ class GroundSystem(QtGui.QMainWindow):
     # Display popup with error
     #
     def DisplayErrorMessage(self, message):
-        print message
-        alert = QtGui.QMessageBox()
+        print(message)
+        alert = QtWidgets.QMessageBox()
         alert.setText(message)
-        alert.setIcon(QtGui.QMessageBox.Warning)
+        alert.setIcon(QtWidgets.QMessageBox.Warning)
         alert.exec_()
 
     # Start the telemetry system for the selected spacecraft
@@ -122,7 +122,7 @@ class GroundSystem(QtGui.QMainWindow):
 if __name__ == "__main__":
 
     # Init app
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
 
     # Init main window
     MainWindow = GroundSystem()

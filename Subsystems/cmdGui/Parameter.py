@@ -19,25 +19,25 @@
 #
 import sys
 import csv
-import getopt 
-import subprocess 
+import getopt
+import subprocess
 import shlex
 import re
 import pickle
 
-from PyQt4 import QtGui, QtNetwork
+from PyQt5 import QtGui, QtNetwork, QtWidgets
 from ParameterDialog import Ui_Dialog
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 from HTMLDocsParser import HTMLDocsParser
 from struct import *
 
-class Parameter(QtGui.QDialog):
+class Parameter(QtWidgets.QDialog):
 
     #
     # Initializes Parameter class
     #
     def __init__(self):
-        QtGui.QDialog.__init__(self) # calls QDialog constructor
+        QtWidgets.QDialog.__init__(self) # calls QDialog constructor
         self.parser = HTMLDocsParser() # creates instance of HTMLDocsParser class
         self.ui = Ui_Dialog() # creates instance of Ui_Dialog class, sets to var ui
         self.ui.setupUi(self) # calls setupUi method in Ui_Dialog class to setup UI
@@ -140,7 +140,7 @@ if __name__ == '__main__':
     #
     # Initializes QT application and Parameter class
     #
-    app = QtGui.QApplication(sys.argv) # creates instance of QtApplication class
+    app = QtWidgets.QApplication(sys.argv) # creates instance of QtApplication class
     param = Parameter() # creates instance of Parameter class
 
 

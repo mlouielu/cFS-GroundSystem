@@ -42,5 +42,5 @@ if __name__ == "__main__":
         datagram = 'Test tlm message'
         sendSocket = socket(AF_INET,SOCK_DGRAM)
         sendSocket.sendto(datagram, (send_host,send_port))
-        print 'Sent msg #' + str(num)
+        print('Sent msg #' + str(num))
 
