@@ -26,7 +26,7 @@ import re
 import glob
 import pickle
 
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 from struct import *
 
 class HTMLDocsParser(HTMLParser):
@@ -151,19 +151,19 @@ if __name__ == '__main__':
 								keyword = parser.findStringLen(keyword)
 								keyword = re.sub('\[|\]|\(|\)','',keyword)
 						if keyword == '0':
-							keyword = input(paramLen[-1]+' not found. Please enter value manually: ')
+							keyword = eval(input(paramLen[-1]+' not found. Please enter value manually: '))
 						stringLen.append(keyword)
 
 
-				print "DATA TYPES:", dataTypesOrig
-				print "PARAM NAMES: ", paramNames
-				print "PARAM STRING LEN:", paramLen
-				print "PARAM DESC: ", paramDesc
-				print "UNIX DATA TYPES:", dataTypesNew
-				print "STRING LENGTH:", stringLen, "\n"
+				print("DATA TYPES:", dataTypesOrig)
+				print("PARAM NAMES: ", paramNames)
+				print("PARAM STRING LEN:", paramLen)
+				print("PARAM DESC: ", paramDesc)
+				print("UNIX DATA TYPES:", dataTypesNew)
+				print("STRING LENGTH:", stringLen, "\n")
 
 			except ValueError:
-				print "Data Fields not found in HTML file"
+				print("Data Fields not found in HTML file")
 
 			# write data to a file
 			file_split = re.split('/|\.', html_file)

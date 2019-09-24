@@ -40,7 +40,7 @@ import pickle
 
 from PyQt4 import QtGui
 from GenericCommandDialog import Ui_GenericCommandDialog
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 from HTMLDocsParser import HTMLDocsParser
 from struct import *
 
@@ -183,8 +183,8 @@ class SubsystemCommands(QtGui.QDialog):
 # Display usage
 #
 def usage():
-    print "Must specify --title=<page name> --file=<cmd_def_file> --pktid=<packet_app_id(hex)> --endian=<LE|BE> --address=<IP address> --port=<UDP port>" 
-    print "     example: --title=\"Executive Services\" --file=cfe-es-cmds.txt --pktid=1806  --endian=LE --address=127.0.0.1 --port=1234" 
+    print("Must specify --title=<page name> --file=<cmd_def_file> --pktid=<packet_app_id(hex)> --endian=<LE|BE> --address=<IP address> --port=<UDP port>") 
+    print("     example: --title=\"Executive Services\" --file=cfe-es-cmds.txt --pktid=1806  --endian=LE --address=127.0.0.1 --port=1234") 
 
 #
 # Main 

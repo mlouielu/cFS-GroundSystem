@@ -136,9 +136,9 @@ class TlmReceiver(QtCore.QThread):
 # Display usage
 #
 def usage():
-    print "Must specify --title=<page name> --port=<udp_port> --appid=<packet_app_id(hex)> --endian=<endian(L|B) --file=<tlm_def_file>"
-    print "     example: --title=Executive Services --port=10800 --appid=800 --file=cfe-es-hk-table.txt --endian=L"
-    print "            (quotes are not on the title string in this example)"
+    print("Must specify --title=<page name> --port=<udp_port> --appid=<packet_app_id(hex)> --endian=<endian(L|B) --file=<tlm_def_file>")
+    print("     example: --title=Executive Services --port=10800 --appid=800 --file=cfe-es-hk-table.txt --endian=L")
+    print("            (quotes are not on the title string in this example)")
 
  
 if __name__ == '__main__':
@@ -187,7 +187,7 @@ if __name__ == '__main__':
     if len(arr) < 3:
         subscription = 'GroundSystem'
 
-    print 'Event Messages Page started. Subscribed to ' + subscription
+    print('Event Messages Page started. Subscribed to ' + subscription)
 
     if endian == 'L':
        py_endian = '<'

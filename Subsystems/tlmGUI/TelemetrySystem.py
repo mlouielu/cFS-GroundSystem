@@ -81,9 +81,9 @@ class TelemetrySystem(QtGui.QDialog):
          appIdString = "%02X" % ord(packetData[0])
          appIdString = appIdString + "%02X" % ord(packetData[1])
          appId = (ord(packetData[0]) << 8) + (ord(packetData[1]))
-         print "\n-----------------------------------------------"
-         print "\nPacket: App ID = ",  hex(appId)
-         print "\nPacket Data: ", strToHex(packetData)
+         print("\n-----------------------------------------------")
+         print("\nPacket: App ID = ",  hex(appId))
+         print("\nPacket Data: ", strToHex(packetData))
 
     #
     # Button press methods
@@ -168,10 +168,10 @@ class TelemetrySystem(QtGui.QDialog):
             appIdString = "%02X" % ord(packetData[0])
             appIdString = appIdString + "%02X" % ord(packetData[1])
             appId = (ord(packetData[0]) << 8) + (ord(packetData[1]))
-            print appIdString
-            print "\nPacket: App ID = ",  hex(appId)
-            print "\nPacket Data: ", strToHex(packetData)
-            print "\n-----------------------------------------------"
+            print(appIdString)
+            print("\nPacket: App ID = ",  hex(appId))
+            print("\nPacket Data: ", strToHex(packetData))
+            print("\n-----------------------------------------------")
 
         #
         # Show number of packets received
@@ -300,7 +300,7 @@ if __name__ == '__main__':
     if len(subscription) == 0:
         subscription = "GroundSystem"
 
-    print 'Telemetry System started. Subscribed to ' + subscription
+    print('Telemetry System started. Subscribed to ' + subscription)
     #
     # Read in the contents of the telemetry packet defintion
     #

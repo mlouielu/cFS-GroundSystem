@@ -27,7 +27,7 @@ import glob
 import pickle
 
 from bs4 import BeautifulSoup 
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 from struct import *
 
 class CommandParser(HTMLParser):
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 		with open(html_file) as html_obj:
 
 			# initializes variables
-			print '\n', 'FILE:', html_file
+			print('\n', 'FILE:', html_file)
 			reader = html_obj.read()
 			soup = BeautifulSoup(reader)
 			cmdNames = [] # names of commands
@@ -94,9 +94,9 @@ if __name__ == '__main__':
 				cmdNames.append(cmdName.encode('ascii'))
 
 			# prints values after iterating through whole file
-			print 'CMD NAMES:', cmdNames
-			print 'CMD CODES:', cmdCodes
-			print 'HTML FILES:', htmlFiles
+			print('CMD NAMES:', cmdNames)
+			print('CMD CODES:', cmdCodes)
+			print('HTML FILES:', htmlFiles)
 
 			# writes data to pickle file
 			pickle_file = 'CommandFiles/' + re.split('/|\.', html_file)[-2]

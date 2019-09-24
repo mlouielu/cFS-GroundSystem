@@ -36,7 +36,7 @@ def main():
     while True:
         # Read envelope with address
         [address, contents] = subscriber.recv_multipart()
-        print("[%s] %s" % (address, contents))
+        print(("[%s] %s" % (address, contents)))
 
     # We never get here but clean up anyhow
     subscriber.close()

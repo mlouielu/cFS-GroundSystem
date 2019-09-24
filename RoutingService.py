@@ -78,7 +78,7 @@ class RoutingService(QtCore.QThread):
                 #
                 if not any(hostIpAddress in s for s in self.ipAddressesList):
                     hostName = "Spacecraft" + str(len(self.spacecraftNames))
-                    print "Detected " + hostName + " at " + hostIpAddress
+                    print("Detected " + hostName + " at " + hostIpAddress)
                     self.ipAddressesList.append(hostIpAddress);
                     self.spacecraftNames.append(hostName)
                     self.emit(self.signalUpdateIpList, hostIpAddress, hostName)
@@ -88,8 +88,8 @@ class RoutingService(QtCore.QThread):
                 self.forwardMessage(datagram, name)
 
             # Handle errors
-            except socket.error, v:
-                print 'Ignored socket error.'
+            except socket.error as v:
+                print('Ignored socket error.')
                 sleep(1)
 
     # Apply header using hostname and packet id and send msg using zeroMQ
